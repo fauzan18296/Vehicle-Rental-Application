@@ -1,6 +1,6 @@
 import os
 from data import KENDARAAN as vehicle
-from ui import ( tampilkan_header, tampilkan_kendaraan, tampilkan_menu, tampilkan_rental, cetak_struk )
+from ui import tampilkan_header, tampilkan_kendaraan, tampilkan_menu, tampilkan_rental, cetak_struk
 from functions import cari_kendaraan, validasi_angka, generate_no_transaksi
 from transaction import buat_rental
 

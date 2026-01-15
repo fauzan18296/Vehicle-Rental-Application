@@ -32,6 +32,7 @@ def tampilkan_kendaraan(data):
         )
 
     print("└─────┴──────────────────┴────────────┴───────┘\n")
+    print("0. Kembali ke menu utama\n")
 
 def tampilkan_rental(rental):
     if not rental:

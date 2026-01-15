@@ -24,7 +24,7 @@ while running:
         id_kendaraan = input("ID kendaraan: ")
 
         if not validasi_angka(id_kendaraan):
-            print("❌ ID tidak valid\n")
+            print("❌ ID tidak valid\n") if validasi_angka(id_kendaraan) != 0 else print("❌ Pembatalan rental\n")
             continue
 
         k = cari_kendaraan(vehicle, int(id_kendaraan))
@@ -34,7 +34,7 @@ while running:
 
         hari = input("Lama sewa (hari): ")
         if not validasi_angka(hari):
-            print("❌ Lama sewa tidak valid\n")
+            print("❌ Lama sewa tidak valid\n") if validasi_angka(hari) != 0 else print("❌ Pembatalan rental\n")
             continue
 
         rental = buat_rental(k, int(hari))

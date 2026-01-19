@@ -1,7 +1,8 @@
 from .user_interface import (
           tampilkan_header,
-          tampilkan_menu,
           tampilkan_kendaraan,
+          tampilkan_menu,
           tampilkan_rental,
-          cetak_struk
+          cetak_struk,
+          tampilkan_sub_menu
 )

@@ -1,1 +1,1 @@
-from .vehicle import KENDARAAN
+from .vehicle import MOBIL, MOTOR

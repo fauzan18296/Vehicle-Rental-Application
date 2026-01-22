@@ -19,50 +19,49 @@ while running:
 
     if pilih == "1":
         tampilkan_sub_menu()
-        pilih_jenis = input("Pilih jenis kendaraan (1,2,3) ketik 0 untuk kembali: ")
-        if pilih_jenis == "1":
+        p = input("Pilih jenis: ")
+        if p == "1":
             tampilkan_kendaraan(MOBIL)
-        elif pilih_jenis == "2":
+        elif p == "2":
             tampilkan_kendaraan(MOTOR)
-        elif pilih_jenis == "3":
+        elif p == "3":
             tampilkan_kendaraan(MOBIL + MOTOR)
-        elif pilih_jenis == "0":
-            continue
-        else:
-            print("❌ Pilihan tidak valid\n")
+
     elif pilih == "2":
         tampilkan_sub_menu()
-        pilih_jenis = input("Pilih jenis kendaraan (1,2,3) ketik 0 untuk kembali: ")
-        if pilih_jenis == "1":
+        p = input("Pilih jenis: ")
+        if p == "1":
             tampilkan_kendaraan(MOBIL)
-        elif pilih_jenis == "2":
+        elif p == "2":
             tampilkan_kendaraan(MOTOR)
-        elif pilih_jenis == "3":
+        elif p == "3":
             tampilkan_kendaraan(MOBIL + MOTOR)
-        elif pilih_jenis == "0":
-            continue
         else:
-            print("❌ Pilihan tidak valid\n")
             continue
-        print("Masukkan ID kendaraan yang ingin disewa:")
-        id_kendaraan = input("ID kendaraan: ")
 
-        if not validasi_angka(id_kendaraan):
+        id_k = input("ID kendaraan: ")
+        if not validasi_angka(id_k):
             print("❌ ID tidak valid\n")
             continue
 
-        k = cari_kendaraan(MOBIL + MOTOR, int(id_kendaraan))
-        if not k or k["stok"] <= 0:
+        kendaraan = cari_kendaraan(MOBIL + MOTOR, int(id_k))
+        if not kendaraan or kendaraan["stok"] <= 0:
             print("❌ Kendaraan tidak tersedia\n")
+            continue
+
+        nama_penyewa = input("Nama penyewa: ")
+        if not nama_penyewa.strip():
+            print("❌ Nama tidak boleh kosong\n")
             continue
 
         hari = input("Lama sewa (hari): ")
         if not validasi_angka(hari):
             print("❌ Lama sewa tidak valid\n")
             continue
-        rental = buat_rental(k, int(hari))
+
+        rental = buat_rental(kendaraan, int(hari), nama_penyewa)
         rental_aktif.append(rental)
-        k["stok"] -= 1
+        kendaraan["stok"] -= 1
 
         cetak_struk(generate_no_transaksi(no_transaksi), rental)
         no_transaksi += 1
@@ -74,16 +73,15 @@ while running:
         if not rental_aktif:
             print("❌ Tidak ada rental aktif\n")
             continue
-
         r = rental_aktif.pop(0)
         riwayat.append(r)
-        print(f"✅ {r['nama']} berhasil dikembalikan\n")
+        print(f"✅ {r['nama']} milik {r['penyewa']} berhasil dikembalikan\n")
 
     elif pilih == "5":
         tampilkan_rental(riwayat)
 
     elif pilih == "6":
-        print("\n👋 Terima kasih telah menggunakan jasa rental!\n")
+        print("👋 Terima kasih!")
         running = False
 
     else:

@@ -66,6 +66,7 @@ def cetak_struk(no, data):
     print("║            STRUK RENTAL                ║")
     print("╠════════════════════════════════════════╣")
     print(f"║ No Transaksi : {no:<23} ║")
+    print(f"║ Nama Penyewa : {data['penyewa']:<23} ║")
     print(f"║ Tanggal      : {datetime.now().strftime('%d/%m/%Y %H:%M:%S'):<23} ║")
     print("╠════════════════════════════════════════╣")
     print(f"║ Kendaraan    : {data['nama']:<23} ║")

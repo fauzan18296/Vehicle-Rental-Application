@@ -4,5 +4,6 @@ from .user_interface import (
           tampilkan_menu,
           tampilkan_rental,
           cetak_struk,
-          tampilkan_sub_menu
+          tampilkan_sub_menu,
+          tampilan_pengembalian
 )

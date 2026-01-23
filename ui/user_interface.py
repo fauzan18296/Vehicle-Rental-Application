@@ -20,6 +20,17 @@ def tampilkan_menu():
     print("│ 6. Keluar                              │")
     print("└────────────────────────────────────────┘")
 
+def tampilan_pengembalian(data):
+    print("┌────────────────────────────────────────┐")
+    print("│     ANTRIAN PENGEMBALIAN KENDARAAN        │")
+    print("├────────────────────────────────────────┤")
+    for no_antrian, k in enumerate(data, start=1):
+        print(
+            f"│ {no_antrian:<3} │ {k['penyewa']:<16} │ "
+        )
+    print("└────────────────────────────────────────┘")
+
+
 def tampilkan_sub_menu():
     print("┌────────────────────────────────────────┐")
     print("│          PILIH JENIS KENDARAAN         │")

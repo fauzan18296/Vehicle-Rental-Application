@@ -1,6 +1,6 @@
 import os
 from data import MOBIL, MOTOR
-from ui import tampilkan_header, tampilkan_kendaraan, tampilkan_menu, tampilkan_rental, cetak_struk, tampilkan_sub_menu
+from ui import tampilkan_header, tampilkan_kendaraan, tampilkan_menu, tampilkan_rental, cetak_struk, tampilkan_sub_menu, tampilan_pengembalian
 from functions import cari_kendaraan, validasi_angka, generate_no_transaksi
 from transaction import buat_rental
 
@@ -70,10 +70,15 @@ while running:
         tampilkan_rental(rental_aktif)
 
     elif pilih == "4":
-        if not rental_aktif:
-            print("❌ Tidak ada rental aktif\n")
+        print("❌ Tidak ada kendaraan yang sedang aktif") if len(rental_aktif) == 0 else tampilan_pengembalian(rental_aktif)
+        if len(rental_aktif) != 0:
+            id_k = input("Nomer antrian yang dikembalikan ( ketik 0 untuk membatalkan ): ")
+        elif not validasi_angka(id_k):
+            print("❌ Nomer antrian tidak valid\n") if validasi_angka(id_k) != 0 else print("❌ Pengembalian dibatalkan\n")
             continue
-        r = rental_aktif.pop(0)
+        else:
+            continue
+        r = rental_aktif.pop()
         riwayat.append(r)
         print(f"✅ {r['nama']} milik {r['penyewa']} berhasil dikembalikan\n")
 
